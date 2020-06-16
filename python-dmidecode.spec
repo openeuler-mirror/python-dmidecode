@@ -1,6 +1,6 @@
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        17
+Release:        18
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -92,8 +92,8 @@ popd
 %license python3/doc/LICENSE python3/doc/AUTHORS python3/doc/AUTHORS.upstream
 %{python3_sitearch}/__pycache__/*.pyc
 %{python3_sitearch}/dmidecode.py
-%{python3_sitearch}/dmidecodemod.cpython-37m-*.so
-%{python3_sitearch}/python_dmidecode-3.12.2-py3.7.egg-info
+%{python3_sitearch}/dmidecodemod.cpython-3*.so
+%{python3_sitearch}/python_dmidecode-3.12.2-py3.*.egg-info
 %{_datadir}/python-dmidecode/pymap.xml
 
 %files help
@@ -101,6 +101,12 @@ popd
 %doc python3/README python3/doc/README.upstream
 
 %changelog
+* Thu Jun 16 2020 hanhui <hanhui15@huawei.com> - 3.12.2-18
+- Type:bugfix
+- Id:NA
+- SUG:NA
+- DESC:Modify the file patch for python3.8
+
 * Sun Dec 29 2019 openEuler Buildteam <buildteam@openeuler.org> - 3.12.2-17
 - Type:bugfix
 - ID:NA

@@ -1,6 +1,6 @@
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        17
+Release:        18
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -101,6 +101,12 @@ popd
 %doc python3/README python3/doc/README.upstream
 
 %changelog
+* Fri Aug 21 2020 fanjiachen <fanjiachen3@huawei.com> - 3.12.2-18
+- Type:rebuild
+- ID:NA
+- SUG:NA
+- DESC:rebuild for requirement package update
+
 * Sun Dec 29 2019 openEuler Buildteam <buildteam@openeuler.org> - 3.12.2-17
 - Type:bugfix
 - ID:NA

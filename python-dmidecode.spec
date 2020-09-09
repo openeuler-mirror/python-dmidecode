@@ -1,11 +1,11 @@
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        18
+Release:        19
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
 URL:            http://projects.autonomy.net.au/python-dmidecode/
-Source0:        https://github.com/nima/python-dmidecode/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/nima/python-dmidecode/archive/v%{version}.tar.gz
 
 BuildRequires:  gcc libxml2-devel python2-libxml2 python3-libxml2
 BuildRequires:  python2-devel python3-devel
@@ -101,6 +101,12 @@ popd
 %doc python3/README python3/doc/README.upstream
 
 %changelog
+* Wed Sep 9 2020 hanhui <hanhui15@huawei.com> - 3.12.2-19
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:modify source url
+
 * Fri Aug 21 2020 fanjiachen <fanjiachen3@huawei.com> - 3.12.2-18
 - Type:rebuild
 - ID:NA

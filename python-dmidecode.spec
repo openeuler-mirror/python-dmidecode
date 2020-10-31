@@ -1,14 +1,15 @@
+%define debug_package %{nil}
+
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        19
+Release:        20
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
 URL:            http://projects.autonomy.net.au/python-dmidecode/
 Source0:        https://github.com/nima/python-dmidecode/archive/v%{version}.tar.gz
 
-BuildRequires:  gcc libxml2-devel python2-libxml2 python3-libxml2
-BuildRequires:  python2-devel python3-devel
+BuildRequires:  gcc libxml2-devel python3-libxml2 python3-devel
 
 %description
 Dmidecode reports information about your system's hardware as described in
@@ -24,16 +25,6 @@ Python-dmidecode is a python extension module that uses the code-base
 of the 'dmidecode' utility and uses libxml2 to display data as python
 data structures or XML data.
 
-%package        -n python2-dmidecode
-Summary:        A python 2 extension module to get DMI data
-Requires:       python2-libxml2
-%{?python_provide:%python_provide python2-dmidecode}
-
-%description    -n python2-dmidecode
-Python2-dmidecode is a python 2 extension module that uses the code-base
-of the 'dmidecode' utility and uses libxml2 to display data as python 2
-data structures or XML data.
-
 %package        -n python3-dmidecode
 Summary:        A python 3 module to access DMI data
 Requires:       python3-libxml2
@@ -46,50 +37,24 @@ data structures or XML data.
 %package_help
 
 %prep
-%autosetup -c -n %{name}-%{version} -p1
-cp -a %{name}-%{version} python2
-cp -a %{name}-%{version} python3
-rm -r %{name}-%{version}
-pushd python3
+%setup -q
 sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
-popd
 
 %build
 export CFLAGS="${CFLAGS-} -std=gnu89"
-pushd python2
 make build
-popd
-pushd python3
-make build
-popd
 
 %install
-pushd python2
-%{__python2} src/setup.py install --root %{buildroot} --prefix=%{_prefix}
-popd
-pushd python3
+export CFLAGS="${RPM_OPT_FLAGS}" LDFLAGS="${RPM_LD_FLAGS}"
 %{__python3} src/setup.py install --root %{buildroot} --prefix=%{_prefix}
-popd
 
 %check
-pushd python2/unit-tests
+pushd unit-tests
 make
 popd
-pushd python3/unit-tests
-make
-popd
-
-%files -n python2-dmidecode
-%license python2/doc/LICENSE python2/doc/AUTHORS python2/doc/AUTHORS.upstream
-%{python2_sitearch}/dmidecode.py
-%{python2_sitearch}/dmidecode.pyc
-%{python2_sitearch}/dmidecode.pyo
-%{python2_sitearch}/dmidecodemod.so
-%{python2_sitearch}/python_dmidecode-3.12.2-py2.7.egg-info
-%{_datadir}/python-dmidecode/pymap.xml
 
 %files -n python3-dmidecode
-%license python3/doc/LICENSE python3/doc/AUTHORS python3/doc/AUTHORS.upstream
+%license doc/LICENSE doc/AUTHORS doc/AUTHORS.upstream
 %{python3_sitearch}/__pycache__/*.pyc
 %{python3_sitearch}/dmidecode.py
 %{python3_sitearch}/dmidecodemod.cpython-3*.so
@@ -97,17 +62,19 @@ popd
 %{_datadir}/python-dmidecode/pymap.xml
 
 %files help
-%doc python2/README python2/doc/README.upstream
-%doc python3/README python3/doc/README.upstream
+%doc README doc/README.upstream
 
 %changelog
+* Fri Oct 30 2020 chengguipeng <chengguipeng1@huawei.com> - 3.12.2-20
+- remove python2-dmidecode subpackage
+
 * Wed Sep 9 2020 hanhui <hanhui15@huawei.com> - 3.12.2-19
 - Type:bugfix
 - ID:NA
 - SUG:NA
 - DESC:modify source url
 
-* Thu Jun 16 2020 hanhui <hanhui15@huawei.com> - 3.12.2-18
+* Tue Jun 16 2020 hanhui <hanhui15@huawei.com> - 3.12.2-18
 - Type:bugfix
 - Id:NA
 - SUG:NA

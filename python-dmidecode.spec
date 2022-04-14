@@ -2,7 +2,7 @@
 
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        20
+Release:        22
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -41,7 +41,7 @@ data structures or XML data.
 sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
 
 %build
-export CFLAGS="${CFLAGS-} -std=gnu89"
+export CFLAGS="${CFLAGS-} -std=gnu89 -s"
 make build
 
 %install
@@ -49,9 +49,9 @@ export CFLAGS="${RPM_OPT_FLAGS}" LDFLAGS="${RPM_LD_FLAGS}"
 %{__python3} src/setup.py install --root %{buildroot} --prefix=%{_prefix}
 
 %check
-pushd unit-tests
-make
-popd
+export PYTHONPATH=%{buildroot}%{python3_sitearch}
+export PYTHON_BIN=%{__python3}
+make -C unit-tests
 
 %files -n python3-dmidecode
 %license doc/LICENSE doc/AUTHORS doc/AUTHORS.upstream
@@ -65,6 +65,12 @@ popd
 %doc README doc/README.upstream
 
 %changelog
+* Thu Apr 14 2022 dongyuzhen <dongyuzhen@h-partners.com> - 3.12.2-22
+- fix test case failed
+
+* Sat Mar 20 2021 Dehui Fan<fandehui1@huawei.com> - 3.12.2-21
+- strip binary files
+
 * Fri Oct 30 2020 chengguipeng <chengguipeng1@huawei.com> - 3.12.2-20
 - remove python2-dmidecode subpackage
 

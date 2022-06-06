@@ -2,7 +2,7 @@
 
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        22
+Release:        23
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -41,8 +41,11 @@ data structures or XML data.
 sed -i 's/python2/python3/g' Makefile unit-tests/Makefile
 
 %build
-export CFLAGS="${CFLAGS-} -std=gnu89 -s"
-make build
+export PYTHON_BIN=%{__python3}
+export PYTHON_VERSION=%{python3_version}
+export CFLAGS="%{build_cflags} -std=gnu89"
+export CC=gcc
+%make_build
 
 %install
 export CFLAGS="${RPM_OPT_FLAGS}" LDFLAGS="${RPM_LD_FLAGS}"
@@ -65,6 +68,12 @@ make -C unit-tests
 %doc README doc/README.upstream
 
 %changelog
+* Mon Jun 6 2022 yangcheng <yangcheng87@h-partners.com> - 3.12.2-23
+- Type:bugfix
+- CVE:NA
+- SUG:NA
+- DESC:strip binary file
+
 * Thu Apr 14 2022 dongyuzhen <dongyuzhen@h-partners.com> - 3.12.2-22
 - fix test case failed
 

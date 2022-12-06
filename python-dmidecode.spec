@@ -1,15 +1,15 @@
 %define debug_package %{nil}
 
 Name:           python-dmidecode
-Version:        3.12.2
-Release:        24
+Version:        3.12.3
+Release:        1
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
 URL:            http://projects.autonomy.net.au/python-dmidecode/
-Source0:        https://github.com/nima/python-dmidecode/archive/v%{version}.tar.gz
+Source0:        https://github.com/nima/python-dmidecode/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 %ifarch sw_64
-Patch1:         python-dmidecode-3.12.2-sw.patch
+Patch1:         python-dmidecode-3.12.3-sw.patch
 %endif
 
 BuildRequires:  gcc libxml2-devel python3-libxml2 python3-devel
@@ -71,6 +71,9 @@ make -C unit-tests
 %doc README doc/README.upstream
 
 %changelog
+* Tue Dec 6 2022 chendexi <chendexi@kylinos.cn> - 3.12.3-1
+- Upgrade to 3.12.3
+
 * Wed Nov 23 2022 wuzx<wuzx1226@qq.com> - 3.12.2-24
 - Add sw64 architecture
 

@@ -1,6 +1,6 @@
-diff -Nuar python-dmidecode-3.12.2.org/src/dmidecode.c python-dmidecode-3.12.2.sw/src/dmidecode.c
---- python-dmidecode-3.12.2.org/src/dmidecode.c	2022-02-26 07:07:27.810000000 +0000
-+++ python-dmidecode-3.12.2.sw/src/dmidecode.c	2022-02-26 07:08:59.290000000 +0000
+diff -Naru python-dmidecode-3.12.3.org/src/dmidecode.c python-dmidecode-3.12.3.sw/src/dmidecode.c
+--- python-dmidecode-3.12.3.org/src/dmidecode.c	2022-11-17 13:51:28.000000000 +0800
++++ python-dmidecode-3.12.3.sw/src/dmidecode.c	2022-12-06 11:13:37.911806178 +0800
 @@ -2,10 +2,10 @@
  /*. ******* coding:utf-8 AUTOHEADER START v1.1 *******
   *. vim: fileencoding=utf-8 syntax=c sw=2 ts=2 et
@@ -16,11 +16,11 @@ diff -Nuar python-dmidecode-3.12.2.org/src/dmidecode.c python-dmidecode-3.12.2.s
   *.
   *. This file is part of Python DMI-Decode.
   *.
-@@ -831,6 +831,7 @@
-           { 0x2B, "Atom" },
+@@ -882,6 +882,7 @@
+           { 0x2F, "Core m7" },
  
            { 0x30, "Alpha" },
-+          { 0x9916, "Sw_64" },
++	   { 0x9916, "Sw_64" },
            { 0x31, "Alpha 21064" },
            { 0x32, "Alpha 21066" },
            { 0x33, "Alpha 21164" },

@@ -1,8 +1,6 @@
-%define debug_package %{nil}
-
 Name:           python-dmidecode
 Version:        3.12.3
-Release:        1
+Release:        2
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -71,6 +69,9 @@ make -C unit-tests
 %doc README doc/README.upstream
 
 %changelog
+* Wed Mar 01 2023 zhouwenpei <zhouwenpei@h-partners.com> - 3.12.3-2
+- strip binary file
+
 * Tue Dec 6 2022 chendexi <chendexi@kylinos.cn> - 3.12.3-1
 - Upgrade to 3.12.3
 

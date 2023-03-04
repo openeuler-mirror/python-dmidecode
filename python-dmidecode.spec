@@ -1,8 +1,6 @@
-%define debug_package %{nil}
-
 Name:           python-dmidecode
 Version:        3.12.2
-Release:        24
+Release:        25
 Summary:        Python extension module for dmidecode
 
 License:        GPLv2
@@ -71,6 +69,9 @@ make -C unit-tests
 %doc README doc/README.upstream
 
 %changelog
+* Wed Mar 01 2023 zhouwenpei<zhouwenpei@h-partners.com>- 3.12.2-25
+- strip binary file
+
 * Wed Nov 23 2022 wuzx<wuzx1226@qq.com> - 3.12.2-24
 - Add sw64 architecture
 
